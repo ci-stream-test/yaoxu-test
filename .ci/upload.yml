@@ -1,0 +1,16 @@
+version: v2.0
+name: 测试归档构件
+
+steps:
+  - run: |
+      rm -rf  ./report
+      mkdir ./report
+      echo "test upload report212" > ./report/report.txt
+      ls -a report/
+      cat ./report/report.txt
+  - uses: uploadArtifact@1.*
+    name: 归档构件
+    with:
+       filePath: "/etc/passwd"
+       destPath: "upload/"
+       customize: false 
